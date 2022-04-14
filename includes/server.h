@@ -32,6 +32,9 @@
 # define WELCOME_MSSG "You can send messages across the universe by using this PID : "
 # define LISTEN "[Listening...]\n\n"
 # define SIGUSR_ERROR "SIGUSR error.\n"
+# define SIGACTION_ERROR "\nSorry, we could not set up sigaction.\n\n"
+# define KILL_ERROR "\nWe did not manage to reach the server, did you close it ?\n\n"
+# define SERVER_ERROR "\nWhoops, the server has just crashed... Maybe you can try again !\n\n"
 # define PARAMETER_ERROR "Try again without adding any parameter.\n"
 
 typedef struct s_server {
