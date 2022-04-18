@@ -1,4 +1,5 @@
 SRCS_SERVER		= server.c \
+				= server_utils.c \
 
 SRCS_CLIENT		= client.c \
 				= client_utils.c \
