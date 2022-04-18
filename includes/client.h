@@ -14,11 +14,11 @@
 
 # define BUFFER_SIZE	4
 
-# define SLEEP_TIME	50
+# define SLEEP_TIME	30
 
 # define NO_MSSG "\nThere is no message to send. Is there anything you would like to say ?\n\n"
 # define SIGACTION_ERROR "\nSorry, we could not set up sigaction.\n\n"
-# define MSSG_SENT "\n[Message sent ! Would you like to send a new one ?]\n\n"
+# define MSSG_SENT "\n[The message has been delivered to the server.]\n\n"
 # define KILL_ERROR "\nWe did not manage to reach the server, did you close it ?\n\n"
 # define SERVER_ERROR "\nWhoops, the server has just crashed... Maybe you can try again !\n\n"
 # define PARAM_ERROR "\nPlease, refer to the following usage : ./client [PID] [message to send]\n\n"

@@ -60,16 +60,16 @@ int	send_null(int pid)
 	return (1);
 }
 
-char    *get_message(char **line)
+/*char    *get_message(char **line)
 {
 	*line = get_next_line(0);
 	return (*line);
-}
+}*/
 
 void	handle_signal(int signum, siginfo_t *info, void *context)
 {
 	int	pid;
-	char	*line;
+	//char	*line;
 
 	if (info->si_pid)
 		pid = info->si_pid;
@@ -78,11 +78,13 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	if (signum == SIGUSR1)
 	{
 		ft_putstr_fd_color(MSSG_SENT, 1, ANSI_COLOR_BLUE);
-		if (!send_all(pid, get_message(&line)))
+		end = 42;
+		return;
+		/*if (!send_all(pid, get_message(&line)))
 		{
 			end = 42;
 			return;
-		}
+		}*/
 	}
 	if (signum == SIGUSR2)
 	{
@@ -110,9 +112,47 @@ int	set_sigaction()
 	return (1);
 }
 
+int	send_size(int pid, int len)
+{
+	unsigned int	mask = 0x8000;
+	int		bits;
+
+	bits = 0;
+	while (bits < 16)
+	{
+		if (len & mask)
+		{	
+			if (kill(pid, SIGUSR1) == -1)
+			{
+				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
+				return (0);
+			}
+		}
+		else
+		{
+			if (kill(pid, SIGUSR2) == -1)
+			{
+				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
+				return (0);
+			}
+		}
+		usleep(SLEEP_TIME);
+		len = len << 1;
+		bits++;
+	}
+	return(1);
+}
+
 int	send_all(int pid, char *str)
 {
-	if (!send_message(pid, ft_itoa(getpid())))
+	unsigned int	mssg_len;
+	int		client_pid;
+
+	client_pid = getpid();
+	mssg_len = ft_strlen(ft_itoa(client_pid)) + 3 + ft_strlen(str) + 1;
+	if (!send_size(pid, mssg_len))
+		return (0);
+	if (!send_message(pid, ft_itoa(client_pid)))
 		return (0);
 	if (!send_message(pid, " : "))
 		return (0);
@@ -146,6 +186,8 @@ void	ft_putstr_fd_color(char *str, int fd, char *color)
 
 int main(int argc, char **argv)
 {
+	end = 0;
+
 	if (argc < 3 || !ft_strisdigit(argv[1]))
 	{
 		ft_putstr_fd_color(PARAM_ERROR, 1, ANSI_COLOR_LIGHT_RED);
@@ -160,6 +202,7 @@ int main(int argc, char **argv)
 		return (0);
 	if (!send_all(ft_atoi(argv[1]), argv[2]))
 		return (0);
+	usleep(500);
 	while (1)
 	{
 		if (end == 42)

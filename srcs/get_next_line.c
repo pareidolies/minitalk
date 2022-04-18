@@ -20,7 +20,7 @@ void	ft_read(int fd, char *buf, char **str)
 				free(*str);
 				*str = tmp;
 			}
-			if (ft_strchr(buf, '\n'))
+			if (ft_strchr(buf, '\0'))
 				break ;
 			r = read(fd, buf, BUFFER_SIZE);
 		}
