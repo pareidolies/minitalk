@@ -4,9 +4,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
+#include "../libft/libft.h"
 
 # define ANSI_COLOR_BLUE		"\x1b[94m"
 # define ANSI_COLOR_LIGHT_WHITE		"\x1b[97m"
+# define ANSI_COLOR_LIGHT_RED		"\x1b[91m"
 # define ANSI_COLOR_RESET		"\x1b[0m"
 
 # define BUFFER_SIZE 4
@@ -31,12 +33,12 @@
 
 # define WELCOME_MSSG "You can send messages across the universe by using this PID : "
 # define LISTEN "[Listening...]\n\n"
-# define SIGUSR_ERROR "SIGUSR error.\n"
-# define SIGACTION_ERROR "\nSorry, we could not set up sigaction.\n\n"
-# define KILL_ERROR "\nWe did not manage to reach the server, did you close it ?\n\n"
-# define SERVER_ERROR "\nWhoops, the server has just crashed... Maybe you can try again !\n\n"
-# define PARAMETER_ERROR "Try again without adding any parameter.\n"
-# define MALLOC "A malloc error occurred and we had to stop the process.\n"
+# define SIGUSR_ERROR "\nError : Unfortunately, a SIGUSR error stopped the process.\n\n"
+# define SIGACTION_ERROR "\nError : Sorry, we could not set up sigaction.\n\n"
+# define KILL_ERROR "\nError : We did not manage to reach the server, did you close it ?\n\n"
+# define SERVER_ERROR "\nError : Whoops, the server has just crashed... Maybe you can try again !\n\n"
+# define PARAMETER_ERROR "\nError : Try again with no parameter.\n\n"
+# define MALLOC "\nError : A malloc error occurred and we had to stop the process.\n\n"
 
 typedef struct s_server {
 	pid_t	pid;

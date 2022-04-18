@@ -1,7 +1,7 @@
 SRCS_SERVER		= server.c \
 
 SRCS_CLIENT		= client.c \
-			  get_next_line.c \
+				= client_utils.c \
 
 BONUS			= checker.c \
 
@@ -35,7 +35,7 @@ INCS			= includes
 
 RM		 	= rm -f
 
-CC			= cc -Wall -Wextra -Werror -fsanitize=address
+CC			= cc -Wall -Wextra -Werror
 
 all:			${CLIENT} ${SERVER}
 

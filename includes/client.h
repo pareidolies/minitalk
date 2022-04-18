@@ -16,15 +16,14 @@
 
 # define SLEEP_TIME	30
 
-# define NO_MSSG "\nThere is no message to send. Is there anything you would like to say ?\n\n"
-# define SIGACTION_ERROR "\nSorry, we could not set up sigaction.\n\n"
-# define MSSG_SENT "\n[The message has been delivered to the server.]\n\n"
-# define KILL_ERROR "\nWe did not manage to reach the server, did you close it ?\n\n"
-# define SERVER_ERROR "\nWhoops, the server has just crashed... Maybe you can try again !\n\n"
-# define PARAM_ERROR "\nPlease, refer to the following usage : ./client [PID] [message to send]\n\n"
+# define NO_MSSG "\nError : There is no message to send. Is there anything you would like to say ?\n\n"
+# define SIGACTION_ERROR "\nError : Sorry, we could not set up sigaction.\n\n"
+# define MSSG_SENT "\nThe message has been delivered to the server.\n\n"
+# define KILL_ERROR "\nError : We did not manage to reach the server, did you close it ?\n\n"
+# define SERVER_ERROR "\nError : Whoops, the server has just crashed... Maybe you can try again !\n\n"
+# define PARAM_ERROR "\nError : Please, refer to the following usage : ./client [PID] [message to send]\n\n"
 
-char    *get_next_line(int fd);
 int	send_all(int pid, char *str);
-void    ft_putstr_fd_color(char *str, int fd, char *color);
+void	ft_putstr_fd_color(char *str, int fd, char *color);
 
 #endif
