@@ -36,6 +36,7 @@
 # define KILL_ERROR "\nWe did not manage to reach the server, did you close it ?\n\n"
 # define SERVER_ERROR "\nWhoops, the server has just crashed... Maybe you can try again !\n\n"
 # define PARAMETER_ERROR "Try again without adding any parameter.\n"
+# define MALLOC "A malloc error occurred and we had to stop the process.\n"
 
 typedef struct s_server {
 	pid_t	pid;

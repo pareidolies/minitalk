@@ -39,6 +39,8 @@ int	receive_len(int signum)
 	if (bits == 16)
 	{
 		message = malloc(len * sizeof(int));
+		if (!message)
+			return(-1);
 		len = 0;
 		bits = 0;
 		return (1);
@@ -93,6 +95,9 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	if (start == 0)
 	{
 		start = receive_len(signum);
+		if (start == -1)
+			ft_putstr_fd_color(MALLOC, 1, ANSI_COLOR_BLUE);
+			
 	}
 	else
 	{
