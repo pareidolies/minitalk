@@ -40,14 +40,15 @@
 # define PARAMETER_ERROR "\nError : Try again with no parameter.\n\n"
 # define MALLOC "\nError : A malloc error occurred and we had to stop the process.\n\n"
 
-typedef struct s_server {
-	pid_t	pid;
-	int	bits;
-	char	character;
-	char	*message;
+//server.c
+int	receive_len(int signum);
+int	receive_mssg(int signum, int pid);
+int	main(int argc, char **argv);
 
-}	t_server;
-
-void    ft_putstr_fd_color(char *str, int fd, char *color);
+//server_utils.c
+void	handle_signal(int signum, siginfo_t *info, void *context);
+int	set_sigaction();
+void	say_hello();
+void	ft_putstr_fd_color(char *str, int fd, char *color);
 
 #endif

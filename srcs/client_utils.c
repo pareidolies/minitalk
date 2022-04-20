@@ -1,5 +1,7 @@
 #include "../includes/client.h"
 
+int	end;
+
 void	handle_signal(int signum, siginfo_t *info, void *context)
 {
 	int	pid;
@@ -38,7 +40,7 @@ int	set_sigaction()
 	}
 	end = 0;
 	return (1);
-
+}
 
 int	ft_strisdigit(char *str)
 {

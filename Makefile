@@ -1,8 +1,8 @@
 SRCS_SERVER		= server.c \
-				= server_utils.c \
+			  server_utils.c \
 
 SRCS_CLIENT		= client.c \
-				= client_utils.c \
+			  client_utils.c \
 
 BONUS			= checker.c \
 

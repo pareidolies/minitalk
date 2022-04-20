@@ -23,7 +23,17 @@
 # define SERVER_ERROR "\nError : Whoops, the server has just crashed... Maybe you can try again !\n\n"
 # define PARAM_ERROR "\nError : Please, refer to the following usage : ./client [PID] [message to send]\n\n"
 
+//client.c
+int	send_size(int pid, int len);
+int	send_message(int pid, char *message);
+int	send_null(int pid);
 int	send_all(int pid, char *str);
+int main(int argc, char **argv);
+
+//client_utils.c
+void	handle_signal(int signum, siginfo_t *info, void *context);
+int	set_sigaction();
+int	ft_strisdigit(char *str);
 void	ft_putstr_fd_color(char *str, int fd, char *color);
 
 #endif

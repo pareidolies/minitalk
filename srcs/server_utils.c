@@ -1,5 +1,7 @@
 #include "../includes/server.h"
 
+char	*message;
+
 void	handle_signal(int signum, siginfo_t *info, void *context)
 {
 	static int	start = 0;
