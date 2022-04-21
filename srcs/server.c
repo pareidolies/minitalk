@@ -16,15 +16,15 @@ int	receive_len(int signum, int pid)
 			return(-1);
 		len = 0;
 		bits = 0;
-		usleep(SLEEP_TIME);
+		//usleep(SLEEP_TIME);
 		if (kill(pid, SIGUSR1) == -1)
 			ft_putstr_fd(KILL_ERROR, 2);
-		return (1);
+		return (pid);
 	}
 	else
 	{
 		len = len << 1;
-		usleep(SLEEP_TIME);
+		//usleep(SLEEP_TIME);
 		if (kill(pid, SIGUSR1) == -1)
 			ft_putstr_fd(KILL_ERROR, 2);
 		return (0);
@@ -52,7 +52,7 @@ int	receive_mssg(int signum, int pid)
 			i = 0;
 			ft_putstr_fd("\n\n", 1);
 			ft_putstr_fd_color(LISTEN, 1, ANSI_COLOR_BLUE);
-			usleep(SLEEP_TIME);
+			//usleep(SLEEP_TIME);
 			if (kill(pid, SIGUSR1) == -1)
 				ft_putstr_fd(KILL_ERROR, 2);
 			return (0);
@@ -63,10 +63,10 @@ int	receive_mssg(int signum, int pid)
 	}
 	else
 		c = c << 1;
-	usleep(SLEEP_TIME);
+	//usleep(SLEEP_TIME);
 	if (kill(pid, SIGUSR1) == -1)
 		ft_putstr_fd(KILL_ERROR, 2);
-	return (1);
+	return (pid);
 }
 
 int main(int argc, char **argv)

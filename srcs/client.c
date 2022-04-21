@@ -135,7 +135,7 @@ int main(int argc, char **argv)
 		return (0);
 	if (!send_all(ft_atoi(argv[1]), argv[2]))
 		return (0);
-	usleep(200);
+	usleep(20000);
 	/*while (1)
 	{
 	//	if (end == 42)

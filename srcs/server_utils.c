@@ -18,6 +18,13 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	}
 	else
 	{
+		if (start != pid)
+		{
+			ft_putstr_fd_color("the client", 1, ANSI_COLOR_BLUE);
+			ft_putnbr_fd(start, 1);
+			ft_putstr_fd_color("was closed while transmission", 1, ANSI_COLOR_BLUE);
+			exit(1);
+		}
 		start = receive_mssg(signum, pid);
 	}
 }
