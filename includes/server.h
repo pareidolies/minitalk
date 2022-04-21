@@ -13,6 +13,8 @@
 
 # define BUFFER_SIZE 4
 
+# define SLEEP_TIME 0
+
 # define L1 " .              +   .                .   . .     .  .   .. . + . .  .  .\n"
 # define L2 "                   .                    .       .    * .. .   . +  +  . \n"
 # define L3 "  .       *                        . . . .  .   .  + . ..   .  . .      \n"
@@ -41,7 +43,7 @@
 # define MALLOC "\nError : A malloc error occurred and we had to stop the process.\n\n"
 
 //server.c
-int	receive_len(int signum);
+int	receive_len(int signum, int pid);
 int	receive_mssg(int signum, int pid);
 int	main(int argc, char **argv);
 

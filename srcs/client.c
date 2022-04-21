@@ -17,6 +17,7 @@ int	send_size(int pid, int len)
 				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 				return (0);
 			}
+			usleep(SLEEP_TIME);
 		}
 		else
 		{
@@ -25,10 +26,12 @@ int	send_size(int pid, int len)
 				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 				return (0);
 			}
+			usleep(SLEEP_TIME);
 		}
-		usleep(SLEEP_TIME);
+		//usleep(SLEEP_TIME);
 		len = len << 1;
 		bits++;
+		//pause();
 	}
 	return(1);
 }
@@ -55,6 +58,7 @@ int	send_message(int pid, char *message)
 					ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 					return (0);
 				}
+				usleep(SLEEP_TIME);
 			}
 			else
 			{
@@ -63,10 +67,12 @@ int	send_message(int pid, char *message)
 					ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 					return (0);
 				}
+				usleep(SLEEP_TIME);
 			}
 			c = c << 1;
 			bits++;
-			usleep(SLEEP_TIME);
+			//usleep(SLEEP_TIME);
+			//pause();
 		}
 		i++;
 	}
@@ -85,8 +91,12 @@ int	send_null(int pid)
 			ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 			return (0);
 		}
-		bits++;
 		usleep(SLEEP_TIME);
+		bits++;
+		if (bits == 8)
+			end = 42;
+		//usleep(SLEEP_TIME);
+		//pause();
 	}
 	return (1);
 }
@@ -125,12 +135,13 @@ int main(int argc, char **argv)
 		return (0);
 	if (!send_all(ft_atoi(argv[1]), argv[2]))
 		return (0);
-	usleep(500);
-	while (1)
+	usleep(200);
+	/*while (1)
 	{
-		if (end == 42)
-			return (0);
-		pause();
-	}
+	//	if (end == 42)
+	//		return (0);
+	//	pause();
+		usleep(200);
+	}*/
 	return (0);
 }

@@ -14,7 +14,7 @@
 
 # define BUFFER_SIZE	4
 
-# define SLEEP_TIME	30
+# define SLEEP_TIME	20000
 
 # define NO_MSSG "\nError : There is no message to send. Is there anything you would like to say ?\n\n"
 # define SIGACTION_ERROR "\nError : Sorry, we could not set up sigaction.\n\n"

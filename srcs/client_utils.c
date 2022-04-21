@@ -12,8 +12,8 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	(void) info;
 	if (signum == SIGUSR1)
 	{
-		ft_putstr_fd_color(MSSG_SENT, 1, ANSI_COLOR_BLUE);
-		end = 42;
+		if (end == 42)
+			ft_putstr_fd_color(MSSG_SENT, 1, ANSI_COLOR_BLUE);
 		return;
 	}
 	if (signum == SIGUSR2)
@@ -26,6 +26,7 @@ int	set_sigaction()
 {
 	struct sigaction        signal;
 
+	sigemptyset(&signal.sa_mask);
 	signal.sa_flags = SA_SIGINFO;
 	signal.sa_sigaction = &handle_signal;
 	if (sigaction(SIGUSR1, &signal, NULL) == -1)

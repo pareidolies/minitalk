@@ -12,10 +12,9 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 		pid = info->si_pid;
 	if (start == 0)
 	{
-		start = receive_len(signum);
+		start = receive_len(signum, pid);
 		if (start == -1)
-			ft_putstr_fd_color(MALLOC, 1, ANSI_COLOR_BLUE);
-			
+			ft_putstr_fd_color(MALLOC, 1, ANSI_COLOR_BLUE);		
 	}
 	else
 	{
@@ -27,6 +26,7 @@ int	set_sigaction()
 {
 	struct sigaction	signal;
 
+	sigemptyset(&signal.sa_mask);
 	signal.sa_flags = SA_SIGINFO;
 	signal.sa_sigaction = &handle_signal;
 	if (sigaction(SIGUSR1, &signal, NULL) == -1)

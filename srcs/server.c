@@ -2,7 +2,7 @@
 
 char	*message;
 
-int	receive_len(int signum)
+int	receive_len(int signum, int pid)
 {
 	static unsigned int	len = 0;
 	static int		bits = 0;	
@@ -16,11 +16,17 @@ int	receive_len(int signum)
 			return(-1);
 		len = 0;
 		bits = 0;
+		usleep(SLEEP_TIME);
+		if (kill(pid, SIGUSR1) == -1)
+			ft_putstr_fd(KILL_ERROR, 2);
 		return (1);
 	}
 	else
 	{
 		len = len << 1;
+		usleep(SLEEP_TIME);
+		if (kill(pid, SIGUSR1) == -1)
+			ft_putstr_fd(KILL_ERROR, 2);
 		return (0);
 	}
 }
@@ -46,6 +52,7 @@ int	receive_mssg(int signum, int pid)
 			i = 0;
 			ft_putstr_fd("\n\n", 1);
 			ft_putstr_fd_color(LISTEN, 1, ANSI_COLOR_BLUE);
+			usleep(SLEEP_TIME);
 			if (kill(pid, SIGUSR1) == -1)
 				ft_putstr_fd(KILL_ERROR, 2);
 			return (0);
@@ -56,6 +63,9 @@ int	receive_mssg(int signum, int pid)
 	}
 	else
 		c = c << 1;
+	usleep(SLEEP_TIME);
+	if (kill(pid, SIGUSR1) == -1)
+		ft_putstr_fd(KILL_ERROR, 2);
 	return (1);
 }
 
@@ -64,8 +74,11 @@ int main(int argc, char **argv)
 	int	pid;
 
 	(void) argv;
-	if (argc != 1)
+	if (argc > 1)
+	{
 		ft_putstr_fd(PARAMETER_ERROR, 2);
+		return (0);
+	}
 	say_hello();
 	pid = getpid();
 	if (!set_sigaction())
@@ -76,8 +89,11 @@ int main(int argc, char **argv)
 	ft_putstr_fd(ANSI_COLOR_RESET, 1);
 	ft_putstr_fd("\n\n", 1);
 	ft_putstr_fd_color(LISTEN, 1, ANSI_COLOR_BLUE);
+	//usleep(500);
 	while (1)
-		//pause();
-		usleep(200);
+	{
+		pause();
+		//usleep(200);
+	}
 	return (0);
 }
