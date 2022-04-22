@@ -8,22 +8,24 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	int		pid;
 
 	(void) context;
+	printf("signal received\n");
 	if (info->si_pid)
 		pid = info->si_pid;
 	if (start == 0)
 	{
 		start = receive_len(signum, pid);
 		if (start == -1)
-			ft_putstr_fd_color(MALLOC, 1, ANSI_COLOR_BLUE);		
+			ft_putstr_fd_color(MALLOC, 2, ANSI_COLOR_LIGHT_RED);		
 	}
 	else
 	{
 		if (start != pid)
 		{
-			ft_putstr_fd_color("the client", 1, ANSI_COLOR_BLUE);
-			ft_putnbr_fd(start, 1);
-			ft_putstr_fd_color("was closed while transmission", 1, ANSI_COLOR_BLUE);
-			exit(1);
+			free(message);
+			ft_putstr_fd_color(SERVER_CLOSE, 2, ANSI_COLOR_LIGHT_RED);
+			ft_putnbr_fd(start, 2);
+			ft_putstr_fd_color(SERVER_CLOSE_2, 2, ANSI_COLOR_LIGHT_RED);
+			exit(EXIT_SUCCESS);
 		}
 		start = receive_mssg(signum, pid);
 	}
@@ -38,12 +40,12 @@ int	set_sigaction()
 	signal.sa_sigaction = &handle_signal;
 	if (sigaction(SIGUSR1, &signal, NULL) == -1)
 	{
-		ft_putstr_fd(SIGUSR_ERROR, 2);
+		ft_putstr_fd_color(SIGACTION_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 		return (0);
 	}
 	if (sigaction(SIGUSR2, &signal, NULL) == -1)
 	{
-		ft_putstr_fd(SIGUSR_ERROR, 2);
+		ft_putstr_fd_color(SIGACTION_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 		return (0);
 	}
 	message = malloc(sizeof(char));

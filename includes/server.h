@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include "../libft/libft.h"
+#include <stdio.h>
 
 # define ANSI_COLOR_BLUE		"\x1b[94m"
 # define ANSI_COLOR_LIGHT_WHITE		"\x1b[97m"
@@ -35,12 +36,13 @@
 
 # define WELCOME_MSSG "You can send messages across the universe by using this PID : "
 # define LISTEN "[Listening...]\n\n"
-# define SIGUSR_ERROR "\nError : Unfortunately, a SIGUSR error stopped the process.\n\n"
 # define SIGACTION_ERROR "\nError : Sorry, we could not set up sigaction.\n\n"
 # define KILL_ERROR "\nError : We did not manage to reach the server, did you close it ?\n\n"
 # define SERVER_ERROR "\nError : Whoops, the server has just crashed... Maybe you can try again !\n\n"
 # define PARAMETER_ERROR "\nError : Try again with no parameter.\n\n"
 # define MALLOC "\nError : A malloc error occurred and we had to stop the process.\n\n"
+# define SERVER_CLOSE "\nError : The following client was closed during transmission : "
+# define SERVER_CLOSE_2 "\nPlease do not close client before completion of the delivery. \n\n"
 
 //server.c
 int	receive_len(int signum, int pid);

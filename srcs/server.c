@@ -14,11 +14,15 @@ int	receive_len(int signum, int pid)
 		message = malloc(len * sizeof(int));
 		if (!message)
 			return(-1);
+		printf("LEN : %d\n", len);
 		len = 0;
 		bits = 0;
 		//usleep(SLEEP_TIME);
 		if (kill(pid, SIGUSR1) == -1)
-			ft_putstr_fd(KILL_ERROR, 2);
+		{
+			ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
+			//free(message);
+		}
 		return (pid);
 	}
 	else
@@ -26,7 +30,7 @@ int	receive_len(int signum, int pid)
 		len = len << 1;
 		//usleep(SLEEP_TIME);
 		if (kill(pid, SIGUSR1) == -1)
-			ft_putstr_fd(KILL_ERROR, 2);
+			ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 		return (0);
 	}
 }
@@ -42,8 +46,11 @@ int	receive_mssg(int signum, int pid)
 	if (bits == 8)
 	{
 		message[i] = c;
+		printf("message[i] : %c\n", message[i]);
 		if (c == '\0')
 		{
+			if (kill(pid, SIGUSR1) == -1)
+				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 			ft_putnbr_fd(pid, 1);
 			ft_putstr_fd(" : ", 1);
 			ft_putstr_fd(message, 1);
@@ -51,10 +58,12 @@ int	receive_mssg(int signum, int pid)
 			bits = 0;
 			i = 0;
 			ft_putstr_fd("\n\n", 1);
+			if (kill(pid, SIGUSR1) == -1)
+				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 			ft_putstr_fd_color(LISTEN, 1, ANSI_COLOR_BLUE);
 			//usleep(SLEEP_TIME);
-			if (kill(pid, SIGUSR1) == -1)
-				ft_putstr_fd(KILL_ERROR, 2);
+			//if (kill(pid, SIGUSR1) == -1)
+			//	ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 			return (0);
 		}
 		bits = 0;
@@ -65,7 +74,11 @@ int	receive_mssg(int signum, int pid)
 		c = c << 1;
 	//usleep(SLEEP_TIME);
 	if (kill(pid, SIGUSR1) == -1)
-		ft_putstr_fd(KILL_ERROR, 2);
+	{
+		ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
+		//free(message);
+		//return (0);
+	}
 	return (pid);
 }
 
@@ -76,7 +89,7 @@ int main(int argc, char **argv)
 	(void) argv;
 	if (argc > 1)
 	{
-		ft_putstr_fd(PARAMETER_ERROR, 2);
+		ft_putstr_fd_color(PARAMETER_ERROR, 2, ANSI_COLOR_LIGHT_RED);
 		return (0);
 	}
 	say_hello();

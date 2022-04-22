@@ -13,12 +13,15 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	if (signum == SIGUSR1)
 	{
 		if (end == 42)
+		{
 			ft_putstr_fd_color(MSSG_SENT, 1, ANSI_COLOR_BLUE);
-		return;
+			exit (EXIT_SUCCESS);
+		}
 	}
 	if (signum == SIGUSR2)
 	{
-		ft_putstr_fd("coucou", 1);
+		ft_putstr_fd_color(SERVER_ERROR, 2, ANSI_COLOR_LIGHT_RED);
+		exit (EXIT_FAILURE);
 	}
 }
 
