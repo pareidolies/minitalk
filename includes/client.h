@@ -6,7 +6,6 @@
 # include "../libft/libft.h"
 # include <signal.h>
 # include <sys/types.h>
-# include <stdio.h>
 
 # define ANSI_COLOR_BLUE		"\x1b[94m"
 # define ANSI_COLOR_LIGHT_WHITE		"\x1b[97m"

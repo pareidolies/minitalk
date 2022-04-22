@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <signal.h>
 #include "../libft/libft.h"
-#include <stdio.h>
 
 # define ANSI_COLOR_BLUE		"\x1b[94m"
 # define ANSI_COLOR_LIGHT_WHITE		"\x1b[97m"

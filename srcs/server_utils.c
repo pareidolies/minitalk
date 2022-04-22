@@ -8,7 +8,6 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	int		pid;
 
 	(void) context;
-	printf("signal received\n");
 	if (info->si_pid)
 		pid = info->si_pid;
 	if (start == 0)

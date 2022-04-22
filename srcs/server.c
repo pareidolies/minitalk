@@ -14,7 +14,6 @@ int	receive_len(int signum, int pid)
 		message = malloc(len * sizeof(int));
 		if (!message)
 			return(-1);
-		printf("LEN : %d\n", len);
 		len = 0;
 		bits = 0;
 		//usleep(SLEEP_TIME);
@@ -46,7 +45,6 @@ int	receive_mssg(int signum, int pid)
 	if (bits == 8)
 	{
 		message[i] = c;
-		printf("message[i] : %c\n", message[i]);
 		if (c == '\0')
 		{
 			if (kill(pid, SIGUSR1) == -1)
@@ -105,7 +103,7 @@ int main(int argc, char **argv)
 	//usleep(500);
 	while (1)
 	{
-		pause();
+		//pause();
 		//usleep(200);
 	}
 	return (0);

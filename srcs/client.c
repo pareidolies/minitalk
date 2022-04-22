@@ -10,31 +10,23 @@ int	send_size(int pid, int len)
 	bits = 0;
 	while (bits < 16)
 	{
-		printf("bits : %d\n", bits);
-		printf("pid : %d\n", pid);
 		if (len & mask)
 		{	
 			if (kill(pid, SIGUSR1) == -1)
 			{
 				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
-				printf("err\n");
 				return (0);
 			}
-			printf("before usleep\n");
 			usleep(SLEEP_TIME);
-			printf("after usleep\n");
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
 			{
 				ft_putstr_fd_color(KILL_ERROR, 2, ANSI_COLOR_LIGHT_RED);
-				printf("err\n");
 				return (0);
 			}
-			printf("before usleep\n");
 			usleep(SLEEP_TIME);
-			printf("after usleep\n");
 		}
 		//usleep(SLEEP_TIME);
 		len = len << 1;
@@ -104,7 +96,6 @@ int	send_null(int pid)
 		if (bits == 8)
 		{
 			end = 42;
-			printf("end = 42\n");
 		}
 		//usleep(SLEEP_TIME);
 		//pause();
@@ -119,16 +110,12 @@ int	send_all(int pid, char *str)
 
 	client_pid = getpid();
 	mssg_len = ft_strlen(str) + 1;
-	printf("1\n");
 	if (!send_size(pid, mssg_len))
 		return (0);
-	printf("2\n");
 	if (!send_message(pid, str))
 		return (0);
-	printf("3\n");
 	if (!send_null(pid))
 		return (0);
-	printf("4\n");
 	return (1);
 }
 
@@ -150,7 +137,7 @@ int main(int argc, char **argv)
 		return (0);
 	if (!send_all(ft_atoi(argv[1]), argv[2]))
 		return (0);
-	usleep(20000);
+	sleep(10);
 	/*while (1)
 	{
 	//	if (end == 42)
