@@ -6,7 +6,7 @@
 /*   By: smostefa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:18:26 by smostefa          #+#    #+#             */
-/*   Updated: 2022/04/26 17:46:13 by smostefa         ###   ########.fr       */
+/*   Updated: 2022/04/26 19:19:57 by smostefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 # include <signal.h>
-# include <sys/types.h>
 
 # define ANSI_COLOR_BLUE		"\x1b[94m"
 # define ANSI_COLOR_LIGHT_WHITE		"\x1b[97m"

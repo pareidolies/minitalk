@@ -12,7 +12,7 @@ BONUS_CLIENT	= client_bonus.c \
 
 SRCS_DIR		= srcs/
 
-BONUS_DIR		= bonus/
+BONUS_DIR		= srcs_bonus/
 
 SRCS_SERVER_PATH	= $(SRCS_SERVER:%=$(SRCS_DIR)%)
 
