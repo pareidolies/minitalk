@@ -6,7 +6,7 @@
 /*   By: smostefa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:18:26 by smostefa          #+#    #+#             */
-/*   Updated: 2022/04/26 19:19:57 by smostefa         ###   ########.fr       */
+/*   Updated: 2022/04/29 13:34:14 by smostefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # define ANSI_COLOR_LIGHT_WHITE		"\x1b[97m"
 # define ANSI_COLOR_LIGHT_RED		"\x1b[91m"
 # define ANSI_COLOR_RESET		"\x1b[0m"
-
-# define BUFFER_SIZE	4
 
 # define SLEEP_TIME	20000
 
