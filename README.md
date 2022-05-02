@@ -4,7 +4,8 @@ Ce projet permet à un client d'envoyer 10 000 caractères au serveur en moins d
 
 Notions abordées : signaux UNIX, opérateurs binaires
 
-![Capture d’écran 2022-05-02 à 22 41 20](https://user-images.githubusercontent.com/96736158/166324216-e08ed040-5a36-4c6f-9083-8bdc6b192d7e.png)
+![Capture d’écran 2022-05-02 à 23 46 19](https://user-images.githubusercontent.com/96736158/166332912-d27f6eb1-946b-4396-b803-a5fcfaff8a17.png)
+
 
 
 Remarques : 
