@@ -23,10 +23,6 @@
 # define ANSI_COLOR_LIGHT_RED	"\x1b[91m"
 # define ANSI_COLOR_RESET	"\x1b[0m"
 
-# define BUFFER_SIZE 4
-
-# define SLEEP_TIME 0
-
 # define L1 " .              +   .                .   . .     .  .   .. . +  .\n"
 # define L2 "                   .                    .       .    * .. .    + \n"
 # define L3 "  .       *                        . . . .  .   .  + . ..   .    \n"
