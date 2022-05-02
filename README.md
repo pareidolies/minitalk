@@ -1,6 +1,6 @@
 # minitalk
 
-Ce projet permet à un client d'envoyer 10 000 caractères au serveur en moins d'une seconde sur Ubuntu.
+Ce projet permet la transmission de 10 000 caractères d'un client à un serveur en moins d'une seconde sur Ubuntu.
 
 Notions abordées : signaux UNIX, opérateurs binaires
 
