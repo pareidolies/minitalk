@@ -26,4 +26,6 @@ Vos terminaux se sont fermés ? N'oubliez pas d'utiliser la fonction sigemptyset
 
 - Cas plus complexe : que se passe-t-il si vous envoyez une très longue chaîne de caractère au serveur, mais que vous fermez le client avant la transmission totale de la chaîne de caractère ? Et si un nouveau client envoie une chaîne de caractère à la suite ?
 
+Crédits Ascii Art : Unknown artist (https://www.asciiart.eu/space/other)
+
 Note : 125/100
