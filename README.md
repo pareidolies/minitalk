@@ -2,6 +2,8 @@
 
 Ce projet permet à un client d'envoyer 10 000 caractères au serveur en moins d'une seconde sur Ubuntu.
 
+Notions abordées : signaux UNIX, opérateurs binaires
+
 Remarques : 
 
 - Le système Linux ne met PAS les signaux en file d’attente lorsqu'un signal de ce type est déjà en attente de traitement. 
@@ -11,6 +13,8 @@ et ainsi de suite. Sur Mac en revanche vous n'aurez pas ce problème.
 
 - Testez votre programme avec  : ./client -1 "hello".
 Vos terminaux se sont fermés ? N'oubliez pas d'utiliser la fonction sigemptyset lorsque vous mettez en place sigaction. Pour plus de détails à ce sujet : man kill et voir ce qui se passe avec kill -1.
+
+- Le sujet précise bien qu'il faut imprimer la chaîne de caractères quand elle est entièrement reçue par le serveur, il ne faut donc pas afficher les caractères un à un. Dans ce projet, le client envoie d'abord la taille de la chaîne de caractères au serveur pour que ce dernier puisse allouer l'espace nécessaire à sa réception avec un seul malloc. Si vous utilisez plusieurs mallocs avec un ft_strjoin pour chaque caractère reçu, vous risquez de ralentir la communication entre le client et le serveur. 
 
 - Une seule variable globale par programme est permise. Si vous jouez le jeu, vous n'aurez pas besoin de maquiller de nombreuses variables avec une structure, il est tout à fait possible de faire le projet avec les deux seules variables globales autorisées. Essayez, vous verrez !
 
